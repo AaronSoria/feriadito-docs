@@ -1,23 +1,24 @@
-<template>
-  <div class="min-h-screen bg-gray-100 text-gray-800 p-6">
-    <div class="max-w-5xl mx-auto">
-      <div class="flex justify-between items-center mb-6">
-        <h1 class="text-4xl font-bold text-blue-700">{{ t.title }}</h1>
-        <select v-model="lang" class="border rounded px-2 py-1">
-          <option value="es">Español</option>
-          <option value="en">English</option>
-        </select>
-      </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentación API - Feriadito</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 p-6">
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-4xl font-bold text-blue-700 text-center mb-10">Documentación de API - Feriados</h1>
 
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /holidays</h2>
-        <p>{{ t.holidays }}</p>
-        <div class="bg-white p-4 rounded shadow mt-2 mb-2">
-          <code>GET https://www.feriadito.com/holidays</code>
-        </div>
-        <div class="bg-white p-4 rounded shadow">
-          <code>GET https://www.feriadito.com/holidays?countryCode=AR&amp;from=2025-05-01&amp;to=2025-04-29</code>
-          <pre class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded overflow-x-auto">
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /holidays</h2>
+      <p>Devuelve todos los feriados disponibles o filtra por país y rango de fechas.</p>
+      <div class="bg-white p-4 rounded shadow mt-2 mb-2">
+        <code>GET https://www.feriadito.com/holidays</code>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <code>GET https://www.feriadito.com/holidays?countryCode=AR&amp;from=2025-05-01&amp;to=2025-04-29</code>
+        <pre class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded overflow-x-auto">
 [
   {
     "Id": 6,
@@ -27,81 +28,71 @@
     "CountryCode": "AR"
   }
 ]</pre>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /holidays/:id</h2>
-        <p>{{ t.holidayById }}</p>
-        <div class="bg-white p-4 rounded shadow mt-2">
-          <code>GET https://www.feriadito.com/holidays/1</code>
-        </div>
-      </section>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /holidays/:id</h2>
+      <p>Devuelve un feriado específico por ID.</p>
+      <div class="bg-white p-4 rounded shadow mt-2">
+        <code>GET https://www.feriadito.com/holidays/1</code>
+      </div>
+    </section>
 
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /holidays/verify</h2>
-        <p>{{ t.verifyHoliday }}</p>
-        <div class="bg-white p-4 rounded shadow mt-2">
-          <code>GET https://www.feriadito.com/holidays/verify?countryCode=AR&amp;date=2025-05-01</code>
-        </div>
-      </section>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /holidays/verify</h2>
+      <p>Verifica si una fecha es feriado en un país determinado. Retorna un booleano.</p>
+      <div class="bg-white p-4 rounded shadow mt-2 mb-2">
+        <code>GET https://www.feriadito.com/holidays/verify?countryCode=AR&amp;date=2025-05-01</code>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <pre class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded overflow-x-auto">
+{
+  "exist": true
+}</pre>
+      </div>
+    </section>
 
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /countries</h2>
-        <p>{{ t.countries }}</p>
-        <div class="bg-white p-4 rounded shadow mt-2">
-          <code>GET https://www.feriadito.com/countries</code>
-        </div>
-      </section>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /countries</h2>
+      <p>Devuelve todos los países registrados.</p>
+      <div class="bg-white p-4 rounded shadow mt-2 mb-2">
+        <code>GET https://www.feriadito.com/countries</code>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <pre class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded overflow-x-auto">
+[
+  { "Id": 1, "Name": "Argentina", "CountryCode": "AR" },
+  { "Id": 2, "Name": "United States", "CountryCode": "US" },
+  { "Id": 3, "Name": "Mexico", "CountryCode": "MX" },
+  { "Id": 4, "Name": "Colombia", "CountryCode": "CO" }
+]</pre>
+      </div>
+    </section>
 
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /countries/:id</h2>
-        <p>{{ t.countryById }}</p>
-        <div class="bg-white p-4 rounded shadow mt-2">
-          <code>GET https://www.feriadito.com/countries/1</code>
-        </div>
-      </section>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-600">GET /countries/:id</h2>
+      <p>Devuelve un país por ID.</p>
+      <div class="bg-white p-4 rounded shadow mt-2 mb-2">
+        <code>GET https://www.feriadito.com/countries/1</code>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <pre class="mt-2 text-sm text-gray-700 bg-gray-50 p-3 rounded overflow-x-auto">
+{
+  "Id": 1,
+  "Name": "Argentina",
+  "CountryCode": "AR"
+}</pre>
+      </div>
+    </section>
 
-      <footer class="mt-20 text-center text-sm text-gray-500">
-        &copy; 2025 API de Feriados | Desarrollado por Aaron Soria
-        <div class="mt-4 flex justify-center gap-6">
-          <a href="https://coff.ee/feriadito" target="_blank" class="text-blue-600 hover:underline">Buy Me a Coffee</a>
-          <a href="https://cafecito.app/feriadito" target="_blank" class="text-blue-600 hover:underline">Cafecito</a>
-        </div>
-      </footer>
-    </div>
+    <footer class="mt-20 text-center text-sm text-gray-500">
+      &copy; 2025 API de Feriados | Desarrollado por Aaron Soria
+      <div class="mt-4 flex justify-center gap-6">
+        <a href="https://coff.ee/feriadito" target="_blank" class="text-blue-600 hover:underline">Buy Me a Coffee</a>
+        <a href="https://cafecito.app/feriadito" target="_blank" class="text-blue-600 hover:underline">Cafecito</a>
+      </div>
+    </footer>
   </div>
-</template>
-
-<script setup>
-import { ref, computed } from 'vue'
-
-const lang = ref('es')
-
-const translations = {
-  es: {
-    title: 'Documentación de API - Feriados',
-    holidays: 'Devuelve todos los feriados disponibles o filtra por país y rango de fechas.',
-    holidayById: 'Devuelve un feriado específico por ID.',
-    verifyHoliday: 'Verifica si una fecha es feriado en un país determinado. Retorna un booleano.',
-    countries: 'Devuelve todos los países registrados.',
-    countryById: 'Devuelve un país por ID.'
-  },
-  en: {
-    title: 'API Documentation - Holidays',
-    holidays: 'Returns all available holidays or filters by country and date range.',
-    holidayById: 'Returns a specific holiday by ID.',
-    verifyHoliday: 'Checks if a date is a holiday in a specific country. Returns a boolean.',
-    countries: 'Returns all registered countries.',
-    countryById: 'Returns a country by ID.'
-  }
-}
-
-const t = computed(() => translations[lang.value])
-</script>
-
-<style scoped>
-code {
-  @apply text-sm font-mono text-gray-700;
-}
-</style>
+</body>
+</html>
